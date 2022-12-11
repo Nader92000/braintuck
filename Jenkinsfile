@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('CheckOut') {
             steps {
-                git branch: 'master', credentialsId: 'GIT_HUB_REPO', url: 'https://github.com/GhofrfanAbdelwahab/braintuck.git'
+                git branch: 'master', credentialsId: 'GIT_HUB_REPO', url: 'https://github.com/GhofranAbdelwahab/braintuck.git'
             }
         }
 
