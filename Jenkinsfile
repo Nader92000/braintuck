@@ -1,12 +1,22 @@
 pipeline {
     agent any
     stages {
+        stage('CheckOut') {
+            steps {
+                git branch: 'master', credentialsId: 'GIT_HUB_REPO', url: 'https://github.com/GhofrfanAbdelwahab/braintuck.git'
+            }
+        }
+
+        stage('Unit Test') {
+            steps {
+                sh "mvn clean install -U"
+            }
+        }
+
         stage('Build') {
             steps {
-                git branch:'master', credentialsId:'GIT_HUB_REPO',url:'https://github.com/GhofranAbdelwahab/braintuck.git'
                 sh "mvn clean package"
             }
-
             post {
                 success {
                     archiveArtifacts 'target/*.jar'
