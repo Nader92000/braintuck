@@ -13,8 +13,6 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public abstract class CountryMapper {
 
-    @Mapping(target = "name",source = "name")
-    @Mapping(target = "zone",source = "zone")
+    @Mapping(target = "id", ignore = true)
     public abstract Country converter(CountryRequest item);
-
 }
