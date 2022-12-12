@@ -35,5 +35,17 @@ pipeline {
                 }
             }
         }
+
+        stage('Nexus') {
+            steps {
+                script {
+                    def pom = readMavenPom file: 'pom.xml'
+                    projectArtifactId = pom.getArtifactId()
+                    projectGroupId = pom.getGroupId()
+                    projectVersion = pom.getVersion()
+                    projectName = pom.getName()
+                }
+            }
+        }
     }
 }
