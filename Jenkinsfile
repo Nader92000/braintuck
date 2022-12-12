@@ -30,7 +30,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv(credentialsId: 'SonarQubeID', installationName: 'SonarQube') {
+                withSonarQubeEnv(credentialsId: 'SONAR_QUBE_ID', installationName: 'SonarQube') {
                     sh "mvn clean verify sonar:sonar -Dsonar.projectKey=BrainTuck"
                 }
             }
