@@ -37,7 +37,9 @@ pipeline {
         }
 
         stage('Nexus') {
-            def pom = readMavenPom file: 'pom.xml'
+            steps {
+                def pom = readMavenPom file: 'pom.xml'
+            }
         }
     }
 }
