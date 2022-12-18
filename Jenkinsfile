@@ -3,6 +3,10 @@ pipeline {
     tools {
         maven 'Maven'
     }
+    environment {
+        POM_VERSION = readMavenPom().getVersion()
+        POM_ARTIFACT_ID = readMavenPom().getArtifactId()
+    }
     stages {
         stage('CheckOut') {
             steps {
@@ -44,14 +48,14 @@ pipeline {
                         protocol: 'http',
                         nexusUrl: '172.18.0.6:8081',
                         groupId: 'com.braintuck',
-                        version: pom.version,
+                        version: POM_VERSION,
                         repository: 'maven-snapshots',
                         credentialsId: 'NEXUS3',
                         artifacts: [
                                 [
                                         artifactId: 'base',
                                         classifier: '',
-                                        file      : './target/base-'+pom.version+'.jar',
+                                        file      : './target/base-'+POM_VERSION+'.jar',
                                         type      : 'jar'
                                 ]
                         ]
