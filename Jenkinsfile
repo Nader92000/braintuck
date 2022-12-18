@@ -50,7 +50,7 @@ pipeline {
                                 [
                                         artifactId: 'base',
                                         classifier: '',
-                                        file      : '/target/base-0.0.1-SNAPSHOT.jar',
+                                        file      : './target/base-0.0.1-SNAPSHOT.jar',
                                         type      : 'jar'
                                 ]
                         ]
