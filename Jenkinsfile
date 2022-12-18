@@ -38,7 +38,23 @@ pipeline {
 
         stage('Nexus') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'base', classifier: '', file: '/var/jenkins_home/workspace/nexus/webapp/target/webapp.war', type: 'war']], credentialsId: 'NEXUS3', groupId: 'com.braintuck', nexusUrl: '172.18.0.6:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '0.0.1-SNAPSHOT'
+                nexusArtifactUploader(
+                        nexusVersion: 'nexus3',
+                        protocol: 'http',
+                        nexusUrl: '172.18.0.6:8081',
+                        groupId: 'com.braintuck',
+                        version: '0.0.1-SNAPSHOT',
+                        repository: 'maven-snapshots',
+                        credentialsId: 'NEXUS3',
+                        artifacts: [
+                                [
+                                        artifactId: 'base',
+                                        classifier: '',
+                                        file      : '/target/base-0.0.1-SNAPSHOT.jar',
+                                        type      : 'jar'
+                                ]
+                        ]
+                )
             }
         }
     }
