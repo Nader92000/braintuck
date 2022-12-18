@@ -38,19 +38,20 @@ pipeline {
 
         stage('Nexus') {
             steps {
+                def pom = readMavenPom file: 'pom.xml'
                 nexusArtifactUploader(
                         nexusVersion: 'nexus3',
                         protocol: 'http',
                         nexusUrl: '172.18.0.6:8081',
                         groupId: 'com.braintuck',
-                        version: '0.0.1-SNAPSHOT',
+                        version: pom.version,
                         repository: 'maven-snapshots',
                         credentialsId: 'NEXUS3',
                         artifacts: [
                                 [
                                         artifactId: 'base',
                                         classifier: '',
-                                        file      : './target/base-0.0.1-SNAPSHOT.jar',
+                                        file      : './target/base-'+pom.version+'.jar',
                                         type      : 'jar'
                                 ]
                         ]
