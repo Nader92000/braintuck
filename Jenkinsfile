@@ -4,7 +4,9 @@ pipeline {
         maven 'Maven'
     }
     environment {
+        POM_VERSION = readMavenPom().getVersion()
         POM_ARTIFACT_ID = readMavenPom().getArtifactId()
+        POM_GROUP_ID = readMavenPom().getGroupId()
     }
     stages {
         stage('CheckOut') {
@@ -45,15 +47,15 @@ pipeline {
                         nexusVersion: 'nexus3',
                         protocol: 'http',
                         nexusUrl: '172.18.0.6:8081',
-                        groupId: 'com.braintuck',
-                        version: readMavenPom().getVersion(),
+                        groupId: POM_GROUP_ID,
+                        version: POM_VERSION,
                         repository: 'maven-snapshots',
                         credentialsId: 'NEXUS3',
                         artifacts: [
                                 [
-                                        artifactId: 'base',
+                                        artifactId: POM_ARTIFACT_ID,
                                         classifier: '',
-                                        file      : './target/base-'+readMavenPom().getVersion()+'.jar',
+                                        file      : './target/base-'+POM_VERSION+'.jar',
                                         type      : 'jar'
                                 ]
                         ]
