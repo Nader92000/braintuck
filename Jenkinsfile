@@ -42,7 +42,6 @@ pipeline {
 
         stage('Nexus') {
             steps {
-                def pom = readMavenPom file: 'pom.xml'
                 nexusArtifactUploader(
                         nexusVersion: 'nexus3',
                         protocol: 'http',
