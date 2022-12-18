@@ -55,7 +55,7 @@ pipeline {
                                 [
                                         artifactId: POM_ARTIFACT_ID,
                                         classifier: '',
-                                        file      : './target/base-'+POM_VERSION+'.jar',
+                                        file      : './target/'+POM_ARTIFACT_ID+'-'+POM_VERSION+'.jar',
                                         type      : 'jar'
                                 ]
                         ]
