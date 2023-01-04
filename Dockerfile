@@ -2,8 +2,8 @@ FROM openjdk:11
 
 MAINTAINER Ghofran Abdelwahab <prog.ghofranabdelwahab@gmail.com>
 
-ARG path
+ARG PATH
 
-COPY $path/target/base-0.0.1-SNAPSHOT.jar base-app.jar
+COPY $PATH/target/base-0.0.1-SNAPSHOT.jar base-app.jar
 
 ENTRYPOINT ["java","-jar", "base-app.jar"]
