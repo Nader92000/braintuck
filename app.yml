@@ -13,6 +13,7 @@ spec:
       labels:
         myapplication: myapp
     spec:
+      serviceAccountName: jenkins-agent-sa
       containers:
         - name: myapp
           image: app:1
