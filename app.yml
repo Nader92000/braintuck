@@ -22,7 +22,7 @@ spec:
           volumeMounts:
             - name: data-logs
               mountPath: /home/application/brain-tuck/logs
-      nodeName: master
+      nodeName: mas
       volumes:
          - name: data-logs
            hostPath:
