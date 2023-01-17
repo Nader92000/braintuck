@@ -7,11 +7,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myapp
+      myapp: myapp
   template:
     metadata:
       labels:
-        app: myapp
+        myapp: myapp
     spec:
       containers:
         - name: myapp
