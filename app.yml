@@ -14,15 +14,18 @@ spec:
         myapplication: myapp
     spec:
       containers:
-        - name: myapp
-          image: app:0
-          ports:
-            - containerPort: 1234
-          volumeMounts:
-            - name: data-logs
-              mountPath: /home/application/brain-tuck/logs
-      nodeName: mas
+      - name: myapp
+        image: app:0
+        ports:
+        - containerPort: 1234
+        volumeMounts:
+        - name: app-logs
+          mountPath: /home/application/brain-tuck/logs
+        env:
+        - name: MONGO_URL
+          value: brain-tuck
+      nodeName: mas    
       volumes:
-         - name: data-logs
-           hostPath:
-              path: /home/nader/app
+      - name: app-logs
+        hostPath:
+          path: /home/nader/app
