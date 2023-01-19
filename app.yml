@@ -23,7 +23,7 @@ spec:
           mountPath: /home/application/brain-tuck/logs
         env:
         - name: MONGO_URL
-          value: brain-tuck
+          value: mongodb://admin:admin@brain-tuck:27017/admin
       nodeName: mas    
       volumes:
       - name: app-logs
